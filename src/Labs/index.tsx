@@ -5,10 +5,9 @@ import TOC from "./TOC";
 
 export default function Labs() {
   return (
-    <div>
+    <div className="container-fluid">
       <TOC />
       <h1>Welcome to Web Dev!!</h1>
-      <p>Tatiana Annika Daradar</p>
       <h1>Labs</h1>
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
