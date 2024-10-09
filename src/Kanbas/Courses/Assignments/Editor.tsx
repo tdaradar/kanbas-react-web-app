@@ -25,7 +25,7 @@ export default function AssignmentEditor() {
             <label htmlFor="wd-points">Points</label>
           </td>
           <td>
-            <input id="wd-points" value={100} />
+            <input id="wd-points" className="form-control" value={100} />
           </td>
         </tr>
         <tr>
@@ -33,8 +33,8 @@ export default function AssignmentEditor() {
             <label htmlFor="wd-group">Assignment Group</label>
           </td>
           <td>
-            <select id="wd-group">
-              <option value="assignments">ASSIGNMENTS</option>
+            <select id="wd-group" className="form-select">
+              <option selected value="assignments">ASSIGNMENTS</option>
               <option value="exams">EXAMS</option>
               <option value="quizzes">QUIZZES</option>
               <option value="project">PROJECT</option>
@@ -46,8 +46,8 @@ export default function AssignmentEditor() {
             <label htmlFor="wd-display-grade-as">Display Grade As</label>
           </td>
           <td>
-              <select id="wd-display-grade-as">
-                  <option value="percentage">Percentage</option>
+              <select className="form-select" id="wd-display-grade-as">
+                  <option selected value="percentage">Percentage</option>
               </select>
           </td>
         </tr>
@@ -56,18 +56,18 @@ export default function AssignmentEditor() {
             <label htmlFor="wd-submission-type">Submission Type</label>
           </td>
           <td>
-              <select id="wd-submission-type">
-                  <option value="Percentage">Online</option>
+              <select id="wd-submission-type" className="form-select">
+                  <option selected value="Percentage">Online</option>
               </select>
-              <div>
+              <div className="form-check">
                   Online Entry Options<br />
-                  <input type="checkbox" id="wd-text-entry" value="text-entry" />
+                  <input type="checkbox" className="form-check-input" id="wd-text-entry" value="text-entry" />
                       <label htmlFor="wd-text-entry">Text Entry</label>
-                  <input type="checkbox" id="wd-media-recordings" value="media-recordings" /> 
+                  <input type="checkbox" className="form-check-input" id="wd-media-recordings" value="media-recordings" /> 
                       <label htmlFor="wd-media-recordings">Media Recordings</label>
-                  <input type="checkbox" id="wd-student-annotation" value="student-annotation" />
+                  <input type="checkbox" className="form-check-input" id="wd-student-annotation" value="student-annotation" />
                       <label htmlFor="wd-student-annotation">Student Annotation</label>
-                  <input type="checkbox" id="wd-file-upload" value="file-upload" />
+                  <input type="checkbox" className="form-check-input" id="wd-file-upload" value="file-upload" />
                       <label htmlFor="wd-file-upload">File Upload</label>
                       
               </div>
@@ -79,16 +79,16 @@ export default function AssignmentEditor() {
           </td>
           <td>
               Assign to<br />
-            <input id="wd-assign-to" value={'Everyone'} />
+            <input id="wd-assign-to" className="form-control" value={'Everyone'} />
             <br /><br />
             Due<br />
-            <input id="wd-due-date" type="date" value="2024-05-13" />
+            <input id="wd-due-date" type="date" className="form-control" value="2024-05-13" />
             <br /><br />
             
             Available from<br />
-            <input id="wd-available-from" type="date" value="2024-05-06" />
+            <input id="wd-available-from" type="date" className="form-control" value="2024-05-06" />
             Until<br />
-            <input id="wd-available-until" type="date" value="2024-05-20" />
+            <input id="wd-available-until" type="date" className="form-control" value="2024-05-20" />
 
           </td>
         </tr>

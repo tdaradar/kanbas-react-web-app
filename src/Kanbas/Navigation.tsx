@@ -4,11 +4,12 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 
+
 export default function KanbasNavigation() {
   return (
     <div
       style={{ width: 120 }}
-      className="d-none d-md-block bg-black position-fixed bottom-0 top-0 z-2 list-group rounded-0 border-0"
+      className="list-group rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
       id="wd-kanbas-navigation"
     >
       <a
@@ -51,6 +52,7 @@ export default function KanbasNavigation() {
         to="/Kanbas/Calendar"
         id="wd-calendar-link"
       >
+        <IoCalendarOutline className="fs-1 text-danger" />
         <br />
         Calendar
       </Link>
@@ -59,6 +61,7 @@ export default function KanbasNavigation() {
         to="/Kanbas/Inbox"
         id="wd-inbox-link"
       >
+        <FaInbox className="fs-1 text-danger" />
         <br />
         Inbox
       </Link>
@@ -67,6 +70,7 @@ export default function KanbasNavigation() {
         to="/Labs"
         id="wd-labs-link"
       >
+        <LiaCogSolid className="fs-1 text-danger" />
         <br />
         Labs
       </Link>
