@@ -3,9 +3,27 @@ import { useParams, Link } from "react-router-dom";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { assignments } from "../../Database";
+import * as db from "../../Database";
+import { useState } from "react";
 
 export default function Assignments() {
   const { cid } = useParams();
+  const [modules, setModules] = useState<any[]>(db.modules);
+  const [moduleName, setModuleName] = useState("");
+  const addModule = () => {
+    setModules([ ...modules, { _id: new Date().getTime().toString(),
+                                     name: moduleName, course: cid, lessons: [] } ]);
+    setModuleName("");
+  };
+  const deleteModule = (moduleId: string) => {
+    setModules(modules.filter((m) => m._id !== moduleId));
+  };
+  const editModule = (moduleId: string) => {
+    setModules(modules.map((m) => (m._id === moduleId ? { ...m, editing: true } : m)));
+  };
+  const updateModule = (module: any) => {
+    setModules(modules.map((m) => (m._id === module._id ? module : m)));
+  };
 
   return (
     <div id="wd-assignments">
@@ -33,7 +51,8 @@ export default function Assignments() {
               <p>
                 Multiple Modules | Not available yet | No due date
               </p>
-              <LessonControlButtons />
+              <LessonControlButtons moduleId={assignment._id}
+        deleteModule={deleteModule} editModule={editModule}/>
             </li>
           ))}
       </ul>
