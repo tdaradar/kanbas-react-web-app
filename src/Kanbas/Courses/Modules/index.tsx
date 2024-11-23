@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import * as db from "../../Database";
 import React, { useState } from "react";
 import ModuleEditor from './ModuleEditor';
+import * as modulesClient from "./client";
 import { addModule, editModule, updateModule, deleteModule }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,6 +15,16 @@ export default function Modules() {
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
+  const removeModule = async (moduleId: string) => {
+    await modulesClient.deleteModule(moduleId);
+    dispatch(deleteModule(moduleId));
+  };
+  const saveModule = async (module: any) => {
+    await modulesClient.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
 
   return (
     <div>
@@ -39,7 +50,7 @@ export default function Modules() {
         }
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            dispatch(updateModule({ ...module, editing: false }));
+            saveModule({ ...module, editing: false });
           }
         }}
         defaultValue={module.name} />
@@ -57,7 +68,7 @@ export default function Modules() {
                   {module.lessons.map((lesson: any) => (
                     <li className="wd-lesson list-group-item p-3 ps-1">
                       <BsGripVertical className="me-2 fs-3" /> {lesson.name} <LessonControlButtons moduleId={module._id}
-        deleteModule={deleteModule} editModule={(moduleId) => dispatch(editModule(moduleId))} />
+        deleteModule={(moduleId) => removeModule(moduleId)} editModule={(moduleId) => dispatch(editModule(moduleId))} />
                     </li>
                   ))}</ul>)}</li>))}</ul></div>);
 }
