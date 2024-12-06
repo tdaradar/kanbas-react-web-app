@@ -56,6 +56,15 @@ export default function TOC() {
           Kanbas
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          className={`nav-link ${pathname.includes("Node") ? "active" : ""}`}
+          id="wd-a3"
+          to="https://github.com/tdaradar/kanbas-node-server-app"
+        >
+          Node Github
+        </Link>
+      </li>
     </ul>
   );
 }
